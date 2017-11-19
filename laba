@@ -1,0 +1,145 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+
+namespace ConsoleApplication1
+{
+	class MyCollection
+	{
+
+        //задание 1
+		public static ArrayList NewCollection(int i)
+		{
+			Random ran = new Random();
+			ArrayList arr = new ArrayList();
+
+			for (int j = 0; j < i; j++)
+				arr.Add(ran.Next(1, 50));
+			return arr;
+		}
+
+		public static void RemoveElementMyCollection(int i, int j, ref ArrayList arr)
+		{
+			arr.RemoveRange(i, j);
+		}
+
+		
+
+		public static void WriteMyCollection(ArrayList arr)
+		{
+			foreach (var a in arr)
+				Console.Write("{0}\t", a);
+			Console.WriteLine("\n");
+		}
+        //конец задания 1
+	}
+
+	class Program
+	{
+		static void Main()
+		{
+
+            //задание 1
+			ArrayList Coll = MyCollection.NewCollection(5);
+            Console.WriteLine("\na. Заполните ее 5-ю случайными целыми числами");
+			Console.WriteLine("Исходная коллекция чисел: ");
+			MyCollection.WriteMyCollection(Coll);
+
+			MyCollection.RemoveElementMyCollection(3, 2, ref Coll);
+			Console.WriteLine("\nc. Удалите заданный элемент: ");
+			Console.WriteLine("Коллекция после удаления последних двух элементов: ");
+			MyCollection.WriteMyCollection(Coll);
+
+
+			Coll.Add("string");
+			Console.WriteLine("\nb. Добавьте к ней строку");
+            Console.WriteLine("Добавили строковый элемент: ");
+			MyCollection.WriteMyCollection(Coll);
+
+
+            int c = Coll.Count;
+			Console.WriteLine("\nd. Выведите количество элементов и коллекцию на консоль. ");
+			Console.WriteLine("Количество элементов: ");
+			Console.WriteLine(c);
+
+
+            bool contains = Coll.Contains("string");
+			Console.WriteLine("\ne. Выполните поиск в коллекции значения");
+			Console.WriteLine("Содержит string: ");
+            Console.WriteLine(contains);
+			//конец задания 1
+
+            Console.WriteLine("|||||||||||задание 2||||||||||| ");
+
+            //задание 2
+			List<float> floatList =new List<float>();
+			floatList.Add(15.4F);
+			floatList.Add(43.32F);
+			floatList.Add(28.5F);
+			floatList.Add(902.3F);
+			floatList.Add(23.4F);
+
+			Console.WriteLine("\na. Вывести коллекцию на консоль");
+            Console.WriteLine("Первая коллекция: List<T> Первый тип: float: ");
+
+			foreach (float i in floatList)
+			{
+				Console.WriteLine(i);
+			}
+
+
+            floatList.RemoveAt(1);
+			Console.WriteLine("\nb. Удалите из коллекции n элементов ");
+            Console.WriteLine(" Удаляем второй элемент: ");
+			foreach (float i in floatList)
+			{
+				Console.WriteLine(i);
+			}
+
+
+            floatList.Add(643.8F);
+			Console.WriteLine("\nc. Добавьте другие элементы .");
+			Console.WriteLine("Добавим 643.8F ");
+			foreach (float i in floatList)
+			{
+				Console.WriteLine(i);
+			}
+
+
+
+
+			var MyStack = new Stack<float>();
+			MyStack.Push(15.4F);
+			MyStack.Push(43.32F);
+			MyStack.Push(28.5F);
+			MyStack.Push(902.3F);
+			MyStack.Push(23.4F);
+
+
+            Console.WriteLine("\nd. Создайте вторую коллекцю (Stack<T>)и заполните ее данными из первой колекции");
+
+
+			Console.WriteLine("Исходный стек: ");
+			foreach (float s in MyStack)
+				Console.Write(s);
+			Console.WriteLine("\n");
+
+
+			Console.WriteLine("\ne. Выведите вторую коллекцию на консоль");
+
+
+			while (MyStack.Count > 0)
+			{
+				Console.WriteLine("Pop -> {0}", MyStack.Pop());
+			}
+
+			if (MyStack.Count == 0)
+				Console.WriteLine("\nСтек пуст!");
+
+
+
+			Console.ReadLine();
+		}
+	}
+}
